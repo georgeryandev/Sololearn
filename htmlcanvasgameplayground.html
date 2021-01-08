@@ -1,0 +1,174 @@
+<html>
+<canvas id="gameCanvas" width="800"
+height="600"></canvas>
+<script>
+canvas = document.getElementById('gameCanvas');
+canvasContext = canvas.getContext('2d');
+var cactusSprite=document.getElementById("cactusSprite");
+function colorRect(leftX, topY, width, height, drawColor) {
+    canvasContext.fillStyle = drawColor;
+    canvasContext.fillRect(leftX,topY,width,height);
+    
+}
+function colorCircle(centerX, centerY, radius, drawColor) {
+   canvasContext.fillStyle = drawColor;
+    canvasContext.beginPath();
+    canvasContext.arc(centerX, centerY, radius, 0, Math.PI*2, true);
+    canvasContext.fill(); 
+}
+function colorText(text, width, height, drawColor) {
+    canvasContext.fillStyle = drawColor;
+     canvasContext.fillText(text, width, height);
+}
+
+function createTree(treeX, treeY, height, bottomColor,topColor) {
+    if (height > 240) {
+    alert("Minimum height is 240!")
+    
+}
+    width=15;
+    
+
+     canvasContext.fillStyle = bottomColor;
+     colorRect(treeX,treeY,width,height)
+     var topX = treeX-15;
+     var topY = treeY-20;
+     var topWidth=width*3;
+     var topHeight=height/2;
+     canvasContext.fillStyle = topColor;
+     colorRect(topX,topY,topWidth,topHeight);
+    
+            
+}
+function createForest(bottomColor,topColor) {
+    createTree(100,500,100,bottomColor,topColor)
+    createTree(200,500,100,bottomColor,topColor)
+    createTree(300,500,100,bottomColor,topColor)
+    createTree(400,500,100,bottomColor,topColor)
+    createTree(500,500,100,bottomColor,topColor)
+    createTree(600,500,100,bottomColor,topColor)
+    createTree(700,500,100,bottomColor,topColor)
+}
+function randomX() {
+   
+    var   X = Math.floor(Math.random() *799);
+ 
+
+  
+    return X;
+
+}
+function randomY() {
+    var Y = Math.floor(Math.random() *200);
+ 
+    return Y;
+}
+function createStar(drawColor) {
+    var X = randomX();
+    var Y = randomY();
+    radius = 2;
+    canvasContext.fillStyle = drawColor;
+    colorCircle(X,Y,radius,drawColor);
+    
+    
+}
+function createStars(drawColor) {
+canvasContext.fillStyle = drawColor;
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+createStar(drawColor);
+}
+function startRain() {
+colorRect(100,100,3,10, 'blue');
+colorRect(200,120,3,10, 'blue');
+colorRect(300,200,3,10, 'blue');
+colorRect(400,180,3,10, 'blue');
+colorRect(500,160,3,10, 'blue');
+colorRect(700,140,3,10, 'blue');
+colorRect(720,120,3,10,'blue');
+colorRect(620,100,3,10,'blue');
+colorRect(500,100,3,10, 'blue');
+colorRect(400,200,3,10,'blue');
+}
+function stopRain() {
+canvasContext.clearRect(100,100,3,10);
+canvasContext.clearRect(200,120,3,10);
+canvasContext.clearRect(300,200,3,10);
+canvasContext.clearRect(400,180,3,10);
+canvasContext.clearRect(500,160,3,10);
+canvasContext.clearRect(700,140,3,10);
+canvasContext.clearRect(720,120,3,10);
+canvasContext.clearRect(620,100,3,10);
+canvasContext.clearRect(500,100,3,10);
+canvasContext.clearRect(400,200,3,10);
+}
+function createCactus() {
+colorRect(80,480,15,100,"green");
+colorRect(80,510,50,15, "green");
+colorRect(40,500,50,15, "green");
+}
+function createGround(drawColor) {
+    canvasContext.fillStyle= drawColor;
+    colorRect(0,580,800,100,drawColor)
+
+
+    colorRect(0,590,800,100,drawColor);
+
+}
+function setBiome(biometype) {
+if (biometype == "woods") {
+    createStars("yellow");
+    createForest("brown","green");
+}
+if (biometype == "rainyLands") {
+    createStars("white");
+    createForest("white","blue");
+}
+}
+window.onload = function() {
+colorRect(0,0,canvas.width,canvas.height, 'black');
+startRain();
+
+
+
+
+}
+
+</script>
+
+</html>
